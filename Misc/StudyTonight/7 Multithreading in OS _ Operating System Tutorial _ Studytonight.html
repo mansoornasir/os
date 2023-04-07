@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://www.studytonight.com/operating-system/multithreading -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multithreading in OS | Operating System Tutorial | Studytonight</title>
+<meta name="description" content="Thread is an execution unit which consists of its own program counter, a stack, and a set of registers">
+<meta name="keywords" content="Operating System lessons, Operating System Tutorial, OS tutorial, OS lessons, Operating System Beginners, Multithreading, Thread, What is thread, why multithreading, benefits of multithreading, multithreading models, many to one, many to many, one to one, multithreading issues">
+
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<link href="./7 Multithreading in OS _ Operating System Tutorial _ Studytonight_files/bootstrap.1517902807.css" rel="stylesheet">
+<link rel="icon" type="image/png" href="https://www.studytonight.com/css/resource/favicon.png">
+</head>
+<body>
+<div class="navbar navbar-fixed-top varela">
+<div class="navbar-inner">
+<div class="nav-container">
+<a class="brand" href="http://www.studytonight.com/" title="Take me Home :)"><img style="max-height:45px;" id="brand-icon" src="./7 Multithreading in OS _ Operating System Tutorial _ Studytonight_files/st-icon-dark.png" alt="studytonight.com"></a>
+<ul class="nav navbar-nav nav-left-responsive">
+<li id="hero-dropdown"><a href="http://studytonight.com/library/">Tutorials&nbsp;<span style="position:relative;top:-2px;"><img src="./7 Multithreading in OS _ Operating System Tutorial _ Studytonight_files/Navbar-Arrow-Down.png" style="width:15px;height:auto"></span></a>
+<div class="nav-hero-dropdown">
+<div class="white-container" style="border-radius:2px;box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)">
+<div class="row">
+<div class="span9">
+<p class="varela nav-heading">PROGRAMMING</p>
+</div>
+</div>
+<div class="row nav-row">
+<div class="span3">
+<a href="https://www.studytonight.com/java/" class="link-inverse" alt="Core Java Tutorial"><p><span class="jewel malibu-container"></span>Core Java</p></a>
+<a href="https://www.studytonight.com/cpp/" class="link-inverse" alt="C++ Tutorial"><p><span class="jewel yellow-container"></span>C++</p></a>
+<a href="https://www.studytonight.com/c/" class="link-inverse" alt="C Language Tutorial"><p><span class="jewel cream-container"></span>C Language</p></a>
+<a href="https://www.studytonight.com/network-programming-in-python/" class="link-inverse" alt="Network Programming with Python Tutorial"><p><span class="jewel marine-container"></span>Network Programming</p></a>
+</div>
+<div class="span3">
+<a href="https://www.studytonight.com/python/" class="link-inverse" alt="Python Tutorial"><p><span class="jewel marine-container"></span>Python</p></a>
+<a href="https://www.studytonight.com/data-structures/" class="link-inverse" alt="Data Structure Tutorial"><p><span class="jewel malibu-light-container"></span>Data Structure</p></a>
+
+<a href="https://www.studytonight.com/android/" class="link-inverse" alt="Android Tutorial"><p><span class="jewel malibu-container"></span>Android</p>
+</a></div><a href="https://www.studytonight.com/android/" class="link-inverse" alt="Android Tutorial">
+</a><div class="span2"><a href="https://www.studytonight.com/android/" class="link-inverse" alt="Android Tutorial">
+</a><a href="https://www.studytonight.com/ruby/" class="link-inverse" alt="Ruby Tutorial"><p><span class="jewel yellow-container"></span>Ruby</p></a>
+<a href="https://www.studytonight.com/servlet/" class="link-inverse" alt="Servlet Tutorial"><p><span class="jewel cream-container"></span>Servlet</p></a>
+<a href="https://www.studytonight.com/jsp/" class="link-inverse" alt="JSP Tutorial"><p><span class="jewel silver-container"></span>JSP</p></a>
+</div>
+</div>
+<hr style="margin:0">
+<div class="row">
+<div class="span9">
+<p class="varela dark-grey nav-heading">WEB</p>
+<div class="row nav-row">
+<div class="span3">
+<a href="https://www.studytonight.com/code/" alt="HTML Tutorial"><p>HTML Course</p></a>
+<a href="https://www.studytonight.com/code/playground/" alt="Practice HTML and CSS"><p>Web Playground</p></a>
+</div>
+<div class="span3">
+<a href="https://www.studytonight.com/cascading-style-sheet/" class="link-inverse" alt="CSS Tutorial"><p><span class="jewel pink-container"></span>CSS</p></a>
+</div>
+<div class="span2">
+<a href="https://www.studytonight.com/rest-web-service/" class="link-inverse" alt="REST Web Service Tutorial"><p><span class="jewel tree-green-container"></span>REST Web Service</p></a>
+</div>
+</div>
+</div>
+</div>
+<hr style="margin:0">
+<div class="row">
+<div class="span9">
+<p class="varela dark-grey nav-heading">COMPUTER</p>
+<div class="row nav-row">
+<div class="span3">
+<a href="https://www.studytonight.com/computer-networks/" class="link-inverse" alt="Computer Network Tutorial"><p><span class="jewel tree-green-container"></span>Computer Network</p></a>
+</div>
+<div class="span3">
+<a href="https://www.studytonight.com/operating-system/" class="link-inverse" alt="Operating System Tutorial"><p><span class="jewel light-purple-container"></span>Operating System</p></a>
+</div>
+<div class="span2">
+<a href="https://www.studytonight.com/computer-architecture/" class="link-inverse" alt="Computer Architecture Tutorial"><p><span class="jewel shamrock-container"></span>Computer Architecture</p></a>
+</div>
+</div>
+</div>
+</div>
+<hr style="margin:0">
+<div class="row">
+<div class="span9">
+<p class="varela dark-grey nav-heading">GAME DEVELOPMENT</p>
+<div class="row nav-row">
+<div class="span9">
+<a href="https://www.studytonight.com/game-development-in-2D/" class="link-inverse" alt="Game Development with Unity Tutorial"><p><span class="jewel yellow-container"></span>Game Development with Unity Engine</p></a>
+</div>
+</div>
+</div>
+</div>
+<hr style="margin:0">
+<div class="row">
+<div class="span9">
+<p class="varela dark-grey nav-heading">DB</p>
+<div class="row nav-row">
+<div class="span3">
+<a href="https://www.studytonight.com/dbms/" class="link-inverse" alt="DBMS and SQL Tutorial"><p><span class="jewel light-purple-container"></span>DBMS</p></a>
+</div>
+<div class="span3">
+<a href="https://www.studytonight.com/mongodb/" class="link-inverse" alt="MongoDB Tutorial"><p><span class="jewel tree-green-container"></span>MongoDB</p></a>
+</div>
+</div>
+</div>
+</div>
+<hr style="margin:0">
+<div class="row">
+<div class="span9">
+<p class="varela dark-grey nav-heading">MISCELLANEOUS</p>
+<div class="row nav-row">
+<div class="span3">
+<a href="https://www.studytonight.com/github/" class="link-inverse" alt="GIT Tutorial"><p><span class="jewel studio-container"></span><span class="jewel-double"></span>GIT</p></a>
+<a href="https://www.studytonight.com/scrum-framework/" class="link-inverse" alt="Scrum Tutorial"><p><span class="jewel light-purple-container"></span>Scrum Framework</p></a>
+</div>
+<div class="span3">
+<a href="https://www.studytonight.com/jenkins/" class="link-inverse" alt="Jenkins Tutorial"><p><span class="jewel malibu-container"></span>Jenkins</p></a>
+<a href="https://www.studytonight.com/maven/" class="link-inverse" alt="Maven Tutorial"><p><span class="jewel shamrock-container"></span>Maven</p></a>
+</div>
+<div class="span2">
+<a href="https://www.studytonight.com/apache-cordova/" class="link-inverse" alt="Apache Cordova Tutorial"><p><span class="jewel studio-container"></span>Apache Cordova</p></a>
+<a href="https://www.studytonight.com/drools/" class="link-inverse" alt="Drools Tutorial"><p><span class="jewel malibu-light-container"></span>Drools</p></a>
+</div>
+</div>
+<br>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li><a href="http://studytonight.com/studyroom/">Q &amp; A Forum</a></li>
+<li><a href="http://studytonight.com/tests/">Tests</a></li>
+<li><a href="http://studytonight.com/code/">HTML Course</a></li>
+<li><a href="https://www.studytonight.com/curious/">Curious <sup class="orange">NEW</sup></a></li>
+</ul>
+<ul class="nav pull-right-menuoption nav-right-responsive">
+
+<li><a href="https://www.studytonight.com/login">Sign in</a></li>
+</ul>
+<div class="nav pull-right-menuoption nav-right-responsive" style="margin-right:15px;margin-top:5px;">
+<span title="Subscribe to Studytonight Youtube Channel"><a href="https://www.youtube.com/channel/UCURY4RZois483CPY8prhx7g" target="_blank"><span class="youtube"></span></a></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span title="Download Studytonight Android App"><a href="https://play.google.com/store/apps/details?id=com.studytonight.app" target="_blank"><span class="android-logo"></span></a></span>
+</div>
+</div>
+</div>
+</div>
+<div style="float:right;margin-right:100px;">
+<div class="bookmark-responsive">
+<div class="bookmark-ribbon traditional roboto">
+<a href="https://www.studytonight.com/collaborate" target="_blank"><div id="bookmark-text">
+<div>WRITE</div><div>FOR US!</div>
+</div></a>
+</div></div></div>
+<div class="row">
+<div class="space-top-50 space-bottom-5 mid-purple-container">
+<div class="container center-med-small">
+<div id="subject-name">
+OPERATING SYSTEM
+</div>
+<div class="pull-right hide-on-med-small">
+<a href="https://www.studytonight.com/tests/?subject=operating-system" class="link-inverse">
+<div class="top-right-goto-test card card-light roboto">
+<span class="tip-icon"></span>&nbsp;&nbsp;PRACTICE TESTS →
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+
+<div class="center plain-text-ad-style" style="margin-bottom:10px;">
+<div class="container">
+<div class="row">
+<div class="span12">
+<script type="text/javascript" async="" src="./7 Multithreading in OS _ Operating System Tutorial _ Studytonight_files/ga.js.download"></script><script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6137246359299957" data-ad-slot="1965829825" data-ad-format="auto"></ins>
+<script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+</div>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<script src="./7 Multithreading in OS _ Operating System Tutorial _ Studytonight_files/jquery.1423906530.js.download"></script>
+<script type="text/javascript">
+$(function() {
+
+$('#slide-toggle-sidebar').on('click', function(){
+        $('#sidebar-menu').css('width','100%');
+	$('#sidebar-menu').slideToggle();
+	return false;
+});
+
+});
+</script>
+<div class="span4">
+<div class="sidebar-collpsed-responsive">
+<a href="https://www.studytonight.com/operating-system/multithreading#" id="slide-toggle-sidebar"><span class="pull-right"><img src="./7 Multithreading in OS _ Operating System Tutorial _ Studytonight_files/collapsed-menu.png" alt="Menu"></span><span>SEE THE INDEX</span></a>
+</div>
+<div id="sidebar-menu">
+<div class="card card-light">
+<ul class="sidebar">
+<li class="main">Operating System</li>
+<li><a href="https://www.studytonight.com/operating-system/introduction-operating-systems">Introduction to Operating System</a></li>
+<li><a href="https://www.studytonight.com/operating-system/evolution-of-os">Evolution of Operating System</a></li>
+<li><a href="https://www.studytonight.com/operating-system/types-of-os">Types of Operating System</a></li>
+<li class="main">Process and Multithreading</li>
+<li><a href="https://www.studytonight.com/operating-system/operating-system-processes">Operating System Processes</a></li>
+<li><a href="https://www.studytonight.com/operating-system/process-scheduling">Process Scheduling</a></li>
+<li><a href="https://www.studytonight.com/operating-system/cpu-scheduling">CPU Scheduling</a></li>
+<li><a href="https://www.studytonight.com/operating-system/multithreading">Introduction to Threads</a></li>
+<li><a href="https://www.studytonight.com/operating-system/process-synchronization">Process Synchronization</a></li>
+<li><a href="https://www.studytonight.com/operating-system/classical-synchronization-problems">Classical Synchronization Problems</a></li>
+<li><a href="https://www.studytonight.com/operating-system/deadlocks">Deadlocks</a></li>
+<li class="main">Memory Management</li>
+<li><a href="https://www.studytonight.com/operating-system/memory-management">Memory Management</a></li>
+<li><a href="https://www.studytonight.com/operating-system/virtual-memory">Virtual Memory</a></li>
+<li><a href="https://www.studytonight.com/operating-system/file-system">File System</a></li>
+<li><a href="https://www.studytonight.com/operating-system/bankers-algorithm">Banker's Algorithm</a></li>
+<li><a href="https://www.studytonight.com/operating-system/bounded-buffer">Bounded Buffer Problem</a></li>
+<li><a href="https://www.studytonight.com/operating-system/comparision-scheduling-algorithms">Comparision of Scheduling Algorithms</a></li>
+<li><a href="https://www.studytonight.com/operating-system/dining-philosophers-problem">Dining Philosophers Problem</a></li>
+<li><a href="https://www.studytonight.com/operating-system/readers-writer-problem">Readers Writer Problem</a></li>
+<li><a href="https://www.studytonight.com/operating-system/secondary-storage">Secondary Storage</a></li>
+<li><a href="https://www.studytonight.com/operating-system/system-calls">System Calls</a></li>
+</ul>
+</div>
+</div>
+<div class="scroller_anchor"></div>
+<div class="scroller">
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6137246359299957" data-ad-slot="5741724623" data-ad-format="auto"></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</div>
+</div>
+<div class="span8">
+<div id="body-content">
+<h3>What are Threads?</h3>
+<p>Thread is an execution unit which consists of its own program counter, a stack, and a set of registers. Threads are also known as Lightweight processes. Threads are popular way to improve application through parallelism. The CPU switches rapidly back and forth among the threads giving illusion that the threads are running in parallel.</p>
+<p>As each thread has its own independent resource for process execution, multpile processes can be executed parallely by increasing number of threads.</p>
+<p class="center"><img src="./7 Multithreading in OS _ Operating System Tutorial _ Studytonight_files/single-and-multithreaded-process.png" alt="Single Threaded and Multithreaded Process"></p>
+<hr>
+<h4>Types of Thread</h4>
+<p>There are two types of threads : </p>
+<ul class="content">
+<li>User Threads</li>
+<li>Kernel Threads</li>
+</ul>
+<p><strong>User threads</strong>, are above the kernel and without kernel support. These are the threads that application programmers use in their programs.</p>
+<p><strong>Kernel threads</strong> are supported within the kernel of the OS itself. All modern OSs support kernel level threads, allowing the kernel to perform multiple simultaneous tasks and/or to service multiple kernel system calls simultaneously.</p>
+<hr>
+<h4>Multithreading Models</h4>
+<p>The user threads must be mapped to kernel threads, by one of the following strategies.</p>
+<ul class="content">
+<li>Many-To-One Model</li>
+<li>One-To-One Model</li>
+<li>Many-To-Many Model</li>
+</ul>
+<hr>
+<h4>Many-To-One Model</h4>
+<ul class="content">
+<li>In the many-to-one model, many user-level threads are all mapped onto a single kernel thread.</li>
+<li>Thread management is handled by the thread library in user space, which is efficient in nature.</li>
+</ul>
+<p class="center"><img src="./7 Multithreading in OS _ Operating System Tutorial _ Studytonight_files/many-to-one-model.png" alt="Many to One thread model"></p>
+<hr>
+<h4>One-To-One Model</h4>
+<ul class="content">
+<li>The one-to-one model creates a separate kernel thread to handle each and every user thread.</li>
+<li>Most implementations of this model place a limit on how many threads can be created.</li>
+<li>Linux and Windows from 95 to XP implement the one-to-one model for threads.</li>
+</ul>
+<p class="center"><img src="./7 Multithreading in OS _ Operating System Tutorial _ Studytonight_files/one-to-one-model.png" alt="One to One thread model"></p>
+<hr>
+<h4>Many-To-Many Model</h4>
+<ul class="content">
+<li>The many-to-many model multiplexes any number of user threads onto an equal or smaller number of kernel threads, combining the best features of the one-to-one and many-to-one models.</li>
+<li>Users can create any number of the threads.</li>
+<li>Blocking the kernel system calls does not block the entire process.</li>
+<li>Processes can be split across multiple processors.</li>
+</ul>
+<p class="center"><img src="./7 Multithreading in OS _ Operating System Tutorial _ Studytonight_files/many-to-many-model.png" alt="Many to Many thread model"></p>
+<hr>
+<h4>Thread Libraries</h4>
+<p>Thread libraries provides programmers with API for creating and managing of threads.</p>
+<p>Thread libraries may be implemented either in user space or in kernel space. The user space involves API functions implemented solely within user space, with no kernel support. The kernel space involves system calls, and requires a kernel with thread library support.</p><br>
+<p><b>There are three types of thread :</b></p>
+<ul class="content">
+<li>POSIX Pitheads, may be provided as either a user or kernel library, as an extension to the POSIX standard.</li>
+<li>Win32 threads, are provided as a kernel-level library on Windows systems.</li>
+<li>Java threads - Since Java generally runs on a Java Virtual Machine, the implementation of threads is based upon whatever OS and hardware the JVM is running on, i.e. either Pitheads or Win32 threads depending on the system</li>
+</ul>
+<hr>
+<h4>Benefits of Multithreading</h4>
+<ol class="content">
+<li>Responsiveness</li>
+<li>Resource sharing, hence allowing better utilization of resources.</li>
+<li>Economy. Creating and managing threads becomes easier.</li>
+<li>Scalability. One thread runs on one CPU. In Multithreaded processes, threads can be distributed over a series of processors to scale.</li>
+<li>Context Switching is smooth. Context switching refers to the procedure followed by CPU to change from one task to another.</li>
+</ol>
+<hr>
+<h4>Multithreading Issues</h4>
+<ol class="content">
+<li><b>Thread Cancellation</b>.
+<p>Thread cancellation means terminating a thread before it has finished working. There can be two approaches for this, one is <b>Asynchronous cancellation</b>, which terminates the target thread immediately. The other is <b>Deferred cancellation</b> allows the target thread to periodically check if it should be cancelled.
+</p></li>
+<li><b>Signal Handling</b>.
+<p>Signals are used in UNIX systems to notify a process that a particular event has occurred. Now in when a Multithreaded process receives a signal, to which thread it must be delivered? It can be delivered to all, or a single thread.
+</p></li>
+<li><b>fork() System Call</b>.
+<p>fork() is a system call executed in the kernel through which a process creates a copy of itself. Now the problem in Multithreaded process is, if one thread forks, will the entire process be copied or not?</p></li>
+<li><b>Security Issues</b> because of extensive sharing of resources between multiple threads.</li>
+</ol>
+<p>There are many other issues that you might face in a multithreaded process, but there are appropriate solutions available for them. Pointing out some issues here was just to study both sides of the coin.</p>
+<hr>
+<div><ul class="pager">
+<li class="previous">
+<a href="https://www.studytonight.com/operating-system/cpu-scheduling">← Prev</a>
+</li>
+<li class="next">
+<a href="https://www.studytonight.com/operating-system/process-synchronization">Next →</a>
+</li>
+</ul></div>
+<hr>
+<p class="center">
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-6137246359299957" data-ad-slot="6460554629"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<span class="hide-on-med-small">
+&nbsp;&nbsp;
+<script async="" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> 
+<ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-6137246359299957" data-ad-slot="9404635430"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({}); 
+</script>
+</span>
+</p>
+<script src="./7 Multithreading in OS _ Operating System Tutorial _ Studytonight_files/sidebar.min.1517815113.js.download"></script></div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39722043-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<div id="footer" class="hide-on-med-small">
+<div class="container margin-30 roboto">
+<div class="row">
+<div class="span3">
+<p>What is Studytonight?</p>
+<p><a href="http://www.studytonight.com/about">About Us</a></p>
+
+<p><a href="https://www.studytonight.com/authors">Authors</a></p>
+<p><a href="https://www.studytonight.com/collaborate">Collaborate</a></p>
+<p><a href="https://www.studytonight.com/testimonials">Testimonials</a></p>
+<p><a href="https://www.studytonight.com/contact">Contact Us</a></p>
+<p><a href="https://www.studytonight.com/suggest">Suggest</a></p>
+
+</div>
+<div class="span3">
+<p>Tutorials</p>
+<div>
+<p><a href="https://www.studytonight.com/android">Android</a></p>
+<p><a href="https://www.studytonight.com/java">Core Java</a></p>
+<p><a href="https://www.studytonight.com/cpp">C++</a></p>
+<p><a href="https://www.studytonight.com/data-structures">Data Structures</a></p>
+<p><a href="https://www.studytonight.com/python">Python</a></p>
+<p><a href="https://www.studytonight.com/network-programming-in-python">Network Programming</a></p>
+<p><a href="https://www.studytonight.com/dbms">DBMS &amp; SQL</a></p>
+<p><a href="https://www.studytonight.com/servlet">Servlet</a></p>
+<p><a href="https://www.studytonight.com/library">More...</a></p>
+</div>
+</div>
+<div class="span3">
+<p>Tests</p>
+<div>
+<p><a href="https://www.studytonight.com/tests">Core Java</a></p>
+<p><a href="https://www.studytonight.com/tests/?subject=android">Android</a></p>
+<p><a href="https://www.studytonight.com/tests?/?subject=cpp">C++</a></p>
+<p><a href="https://www.studytonight.com/tests?/?subject=dbms">DBMS</a></p>
+<p><a href="https://www.studytonight.com/tests?/?subject=c">C Language</a></p>
+<p><a href="https://www.studytonight.com/tests?/?subject=c">GATE 2018</a></p>
+<p><a href="https://www.studytonight.com/tests">More...</a></p>
+</div>
+</div>
+<div class="span3">
+<p>Learn to Code</p>
+<div>
+<p><a href="https://www.studytonight.com/code/html">HTML</a></p>
+<p><a href="https://www.studytonight.com/cascading-style-sheet/">CSS</a></p>
+<p><a href="https://www.studytonight.com/code/playground">Website Development</a></p>
+</div>
+<br>
+<p>Interview Questions</p>
+<div>
+<p><a href="https://www.studytonight.com/flashcards/Java">Java Interview Question</a></p>
+<p><a href="https://www.studytonight.com/flashcards/Cpp">C++ Interview Question</a></p>
+<p><a href="https://www.studytonight.com/flashcards/OS">OS Interview Question</a></p>
+<p><a href="https://www.studytonight.com/flashcards/Sql">DBMS Interview Question</a></p>
+<p><a href="https://www.studytonight.com/flashcards/">More...</a></p>
+</div>
+</div>
+</div> 
+<br>
+<div class="row">
+<div class="span12">
+<p style="margin-left:-10px;">
+<a href="https://facebook.com/Studytonight" target="_blank"><span class="facebook"></span></a>&nbsp;
+<a href="https://twitter.com/studytonight" target="_blank"><span class="twitter"></span></a>&nbsp;
+<a href="https://plus.google.com/+Studytonight/" target="_blank"><span class="google-plus"></span></a>&nbsp;
+<a href="https://www.instagram.com/study.tonight/" target="_blank"><span class="instagram"></span></a>&nbsp;
+<a href="https://www.linkedin.com/company/studytonight" target="_blank"><span class="linkedin"></span></a>&nbsp;
+</p>
+<p>© 2018 Studytonight. &nbsp; <small>All rights reserved.</small></p>
+</div>
+</div>
+</div> 
+</div> 
+
+</body></html>

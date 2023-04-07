@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<!-- saved from url=(0066)https://www.tutorialspoint.com/operating_system/os_io_hardware.htm -->
+<html style="" class=" js touch csstransforms3d csstransitions"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Basic -->
+
+<title>Operating System - I/O Hardware</title>
+<meta name="description" content="Operating System I/O Hardware -  Learning operating system concepts in simple and easy steps : A beginner&#39;s tutorial containing complete knowledge about an operating system starting from its Definition, Functions, Conceptual View, Program Execution, Program Execution, Communication, Error Handling, User Account Management, Multitasking, Real Time System, Process, Program, Memory Management, and Security, Overview, Types, Services, Properties, Processes, Process Scheduling, Scheduling Algorithms, Multithreading, Virtual Memory, I/O Hardware, I/O Software, File System, Linux.">
+<meta name="Keywords" content="Operating System, Tutorials, Learning, Beginners, Basics, Definition, Functions, Conceptual View, Program Execution, Program Execution, Communication, Error Handling, User Account Management, Multitasking, Real Time System, Process, Program, Memory Management, Security, Overview, Types, Services, Properties, Processes, Process Scheduling, Scheduling Algorithms, Multithreading, Virtual Memory, I/O Hardware, I/O Software, File System, Linux.">
+<!--<base href="https://www.tutorialspoint.com/">--><base href=".">
+<link rel="shortcut icon" href="https://www.tutorialspoint.com/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="fb:app_id" content="471319149685276">
+<meta property="og:site_name" content="www.tutorialspoint.com">
+<meta name="robots" content="index, follow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="author" content="tutorialspoint.com">
+<script src="https://securepubads.g.doubleclick.net/gpt/pubads_impl_rendering_179.js"></script><script src="./11 - Operating System - I_O Hardware_files/cb=gapi.loaded_1" async=""></script><script src="./11 - Operating System - I_O Hardware_files/cb=gapi(1).loaded_0" async=""></script><script type="text/javascript" src="./11 - Operating System - I_O Hardware_files/script-min-v4.js.download"></script>
+<link rel="stylesheet" href="./11 - Operating System - I_O Hardware_files/style-min.css">
+<script async="async" src="./11 - Operating System - I_O Hardware_files/gpt.js.download"></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script><link rel="preload" href="https://adservice.google.com.pk/adsid/integrator.js?domain=www.tutorialspoint.com" as="script"><script type="text/javascript" src="https://adservice.google.com.pk/adsid/integrator.js?domain=www.tutorialspoint.com"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=www.tutorialspoint.com" as="script"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=www.tutorialspoint.com"></script><script src="https://securepubads.g.doubleclick.net/gpt/pubads_impl_179.js" async=""></script>
+<script>
+googletag.cmd.push(function() {
+    googletag.defineSlot('/60931893/tutorial_right_bottom', [[300, 250], [300, 600]], 'div-gpt-ad-1510138782906-0').addService(googletag.pubads());
+    googletag.defineSlot('/60931893/tutorial_right_middle', [[300, 250], [300, 600]], 'div-gpt-ad-1510138782906-1').addService(googletag.pubads());
+    googletag.defineSlot('/60931893/tutorial_right_top', [300, 250], 'div-gpt-ad-1510138782906-2').addService(googletag.pubads());
+    googletag.defineSlot('/60931893/tutorial_bottom_leader_board', [[600, 400], [300, 250], [480, 320], [468, 60], [336, 280], [600, 200], [580, 400]], 'div-gpt-ad-1510138782906-3').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+});
+function openNav() {	
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("right_obs").style.display = "block";
+}
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("right_obs").style.display = "none";
+}
+function close_obs_sidenav(){
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("right_obs").style.display = "none";
+}
+</script>
+<!-- Head Libs -->
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
+<![endif]-->
+<style>
+select{ border:0 !important; outline: 1px inset black !important; outline-offset: -1px !important; }
+.btnsbmt{ background: #3896c2 !important;}
+ul.nav-list.primary>li a.videolink{    background: none; margin: 0px; padding: 0px; border: 1px solid #d6d6d6;}
+div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.footer-copyright { background: #3896c2 url(/images/pattern.png) repeat center center !important;}
+.sub-main-menu .sub-menuu div:hover, .sub-main-menu .viewall, header nav ul.nav-main li a:hover, button.btn-responsive-nav, header div.search button.btn-default { background: #3896c2 !important;}
+.submenu-item{ border-bottom: 2px solid #3896c2 !important; border-top: 2px solid #3896c2 !important }
+.ace_scroller{overflow: auto!important;}
+a.demo{font-family: "Open Sans",Arial,sans-serif; background:#3896c2; color:#fff; font-size:13px; padding:3px 10px; border:1px solid #d6d6d6; position:absolute; right:5px; margin:-6px 17px 0px 0px;}
+a.demo:hover{opacity:.8}
+</style>
+<script>
+$(document).ready(function() {
+  $('input[name="q"]').keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+</script>
+<link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-15/html/container.html"></head>
+<body onload="prettyPrint()" style="">
+<div class="wrapLoader">
+   <div class="imgLoader">
+      <img src="./11 - Operating System - I_O Hardware_files/loading-cg.gif" alt="" width="70" height="70">
+   </div>
+</div>
+<div id="right_obs" class="display-none" onclick="close_obs_sidenav()"></div>
+<header>
+   <div class="container">			
+      <h1 class="logo">
+      <a href="https://www.tutorialspoint.com/index.htm" title="tutorialspoint">
+      <img alt="tutorialspoint" src="./11 - Operating System - I_O Hardware_files/logo.png">
+      </a>
+      </h1>			
+      <ul class="tp-inline-block pull-right" id="tp-head-icons">
+        <li>
+           <div class="tp-second-nav tp-display-none tp-pointer" onclick="openNav()">
+              <i class="fa fa-th-large fa-lg"></i>
+           </div>
+        </li>
+     </ul>
+     <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse" id="pull" style="top: 24px!important"> <i class="icon icon-bars"></i> </button>
+      <nav>
+         <ul class="nav nav-pills nav-top">
+            <li><a href="https://www.tutorialspoint.com/about/about_careers.htm" style="background: #fffb09; font-weight: bold;"><i class="icon icon-suitcase"></i> Are you a Trainer?</a></li>
+            <li> <a target="_blank" href="http://www.qries.com/" rel="nofollow"><i class="fa fa-send"></i> &nbsp;Qries</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/whiteboard.htm"><img src="./11 - Operating System - I_O Hardware_files/image-editor.png" alt="Whiteboard" title="Whiteboard"> &nbsp;Whiteboard</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/netmeeting.php"><i class="fa-camera"></i> &nbsp;Net Meeting</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/online_dev_tools.htm"> <i class="dev-tools-menu" style="opacity:.5"></i> Tools </a> </li>
+            <li> <a href="https://www.tutorialspoint.com/articles/index.php"><i class="icon icon-file-text-o"></i> &nbsp;Articles</a> </li>            
+            <li class="top-icons">
+              <ul class="social-icons">
+              <li class="facebook"><a href="https://www.facebook.com/tutorialspointindia" target="_blank" data-placement="bottom" title="tutorialspoint @ Facebook">Facebook</a></li>
+              <li class="googleplus"><a href="https://plus.google.com/u/0/116678774017490391259/posts" target="_blank" data-placement="bottom" title="tutorialspoint @ Google+">Google+</a></li>
+              <li class="twitter"><a href="https://www.twitter.com/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Twitter">Twitter</a></li>
+              <li class="linkedin"><a href="https://www.linkedin.com/company/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Linkedin">Linkedin</a></li>
+              <li class="youtube"><a href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" data-placement="bottom" title="tutorialspoint YouTube">YouTube</a></li>
+              </ul>
+           </li>
+         </ul>
+      </nav>
+    </div>
+     <div class="sidenav" id="mySidenav">
+     <div class="navbar nav-main">
+      <div class="container">
+         <nav class="nav-main mega-menu">
+            <ul class="nav nav-pills nav-main" id="mainMenu">
+               <li class="dropdown no-sub-menu"> <a class="dropdown" href="https://www.tutorialspoint.com/index.htm"><i class="icon icon-home"></i> Home</a> </li>   
+               <li class="dropdown"><a class="dropdown" href="https://www.tutorialspoint.com/tutorialslibrary.htm"><span class="tut-lib"> Library </span></a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/videotutorials/index.htm"><i class="fa-toggle-right"></i> Videos </a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/questions/index.php"><i class="fa fa-send"></i> Q/A </a> </li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/tutor_connect/index.php"><i class="fa-user"> </i> Tutor Connect</a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/codingground.htm"><i class="fa-code"></i> Coding Ground </a> </li>
+               <li class="dropdown no-sub-menu">
+                  <div class="searchform-popup">
+                     <input class="header-search-box" type="text" id="search-string" name="q" placeholder="Search your favorite tutorials..." onfocus="if (this.value == &#39;Search your favorite tutorials...&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Search your favorite tutorials...&#39;;}" autocomplete="off">
+                     <div class="magnifying-glass"><i class="icon-search"></i> Search </div>
+                 </div>
+               </li>
+            </ul>
+         </nav>
+        </div>
+      </div>	
+     </div>	
+   	
+</header>
+<div style="clear:both;"></div>
+<div role="main" class="main">
+<div class="container">
+<div class="row">
+<div class="col-md-2">
+<aside class="sidebar">
+<div class="mini-logo">
+<img src="./11 - Operating System - I_O Hardware_files/os-mini-logo.jpg" alt="Operating System Tutorial">
+</div>
+<ul class="nav nav-list primary left-menu">
+<li><a class="videolink" href="https://www.tutorialspoint.com/operating_system/index.asp" target="_blank"><img src="./11 - Operating System - I_O Hardware_files/operating-system-video-tutorials.jpg" alt="Operating System Video Tutorials"></a></li>
+</ul>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Operating System Tutorial</li>
+<li><a href="https://www.tutorialspoint.com/operating_system/index.htm">OS - Home</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_overview.htm">OS - Overview</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_types.htm">OS - Types</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_services.htm">OS - Services</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_properties.htm">OS - Properties</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_processes.htm">OS - Processes</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_process_scheduling.htm">OS - Process Scheduling</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_process_scheduling_algorithms.htm">OS - Scheduling algorithms</a></li> 
+<li><a href="https://www.tutorialspoint.com/operating_system/os_multi_threading.htm">OS -  Multi-threading</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_memory_management.htm">OS - Memory Management</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_virtual_memory.htm">OS -  Virtual Memory</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_io_hardware.htm" style="background-color: rgb(214, 214, 214);">OS -  I/O Hardware</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_io_software.htm">OS - I/O Software</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_file_system.htm">OS -  File System</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_security.htm">OS - Security</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_linux.htm">OS - Linux</a></li>
+</ul>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">OS - Exams Questions with Answers</li>
+<li><a class="left" href="https://www.tutorialspoint.com/operating_system/os_exams_questions_answers.htm">OS - Exams Questions with Answers</a></li>
+</ul>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Operating System Useful Resources</li>
+<li><a class="left" href="https://www.tutorialspoint.com/operating_system/os_quick_guide.htm">OS - Quick Guide</a></li>
+<li><a class="left" href="https://www.tutorialspoint.com/operating_system/os_useful_resources.htm">OS - Useful Resources</a></li>
+<li><a class="left" href="https://www.tutorialspoint.com/operating_system/os_discussion.htm">OS - Discussion</a></li>
+</ul>
+<ul class="nav nav-list primary push-bottom left-menu special">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="https://www.tutorialspoint.com/developers_best_practices/index.htm">Developer's Best Practices</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/questions_and_answers.htm">Questions and Answers</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/effective_resume_writing.htm">Effective Resume Writing</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/hr_interview_questions/index.htm">HR Interview Questions</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_glossary.htm">Computer Glossary</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_whoiswho.htm">Who is Who</a></li>
+</ul>
+ </aside>
+</div>
+<!-- PRINTING STARTS HERE -->
+<div class="row">
+<div class="content">
+<div class="col-md-7 middle-col">
+<h1>Operating System - I/O Hardware</h1>
+<div class="topgooglead">
+<hr>
+<div style="padding-bottom:5px;padding-left:10px;">Advertisements</div>
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "image";
+google_ad_channel = "";
+//--></script>
+<script type="text/javascript" src="https://pagead2.googlesyndication.com/pagead/show_ads.js"> 
+</script>
+</div>
+<hr>
+<div class="pre-btn">
+<a href="https://www.tutorialspoint.com/operating_system/os_virtual_memory.htm"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="https://www.tutorialspoint.com/operating_system/os_io_software.htm">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<div class="clearer"></div>
+<hr>
+<p>One of the important jobs of an Operating System is to manage various I/O devices including mouse, keyboards, touch pad, disk drives, display adapters, USB devices, Bit-mapped screen, LED, Analog-to-digital converter, On/off switch, network connections, audio I/O, printers etc.</p>
+<p>An I/O system is required to take an application I/O request and send it to the physical device, then take whatever response comes back from the device and send it to the application. I/O devices can be divided into two categories −</p>
+<ul class="list">
+<li><p><b>Block devices</b> − A block device is one with which the driver communicates by sending entire blocks of data. For example, Hard disks, USB cameras, Disk-On-Key etc.</p></li>
+<li><p><b>Character devices</b> − A character device is one with which the driver communicates by sending and receiving single characters (bytes, octets). For example, serial ports, parallel ports, sounds cards etc</p></li>
+</ul>
+<h2>Device Controllers</h2>
+<p>Device drivers are software modules that can be plugged into an OS to handle a particular device. Operating System takes help from device drivers to handle all I/O devices.</p>
+<p>The Device Controller works like an interface between a device and a device driver. I/O units (Keyboard, mouse, printer, etc.) typically consist of a mechanical component and an electronic component where electronic component is called the device controller.</p>
+<p>There is always a device controller and a device driver for each device to communicate with the Operating Systems. A device controller may be able to handle multiple devices. As an interface its main task is to convert serial bit stream to block of bytes, perform error correction as necessary.</p>
+<p>Any device connected to the computer is connected by a plug and socket, and the socket is connected to a device controller. Following is a model for connecting the CPU, memory, controllers, and I/O devices where CPU and device controllers all use a common bus for communication.</p>
+<img src="./11 - Operating System - I_O Hardware_files/device_controllers.jpg" alt="Device Controllers">
+<h2>Synchronous vs asynchronous I/O</h2> 
+<ul class="list">
+<li><p><b>Synchronous I/O</b> − In this scheme CPU execution waits while I/O proceeds</p></li>
+<li><p><b>Asynchronous I/O</b> − I/O proceeds concurrently with CPU execution</p></li>
+</ul>
+<h2>Communication to I/O Devices</h2>
+<p>The CPU must have a way to pass information to and from an I/O device. There are three approaches available to communicate with the CPU and Device.</p>
+<ul class="list">
+<li>Special Instruction I/O</li>
+<li>Memory-mapped I/O</li>
+<li>Direct memory access (DMA)</li>
+</ul>
+<h3>Special Instruction I/O</h3>
+<p>This uses CPU instructions that are specifically made for controlling I/O devices. These instructions typically allow data to be sent to an I/O device or read from an I/O device.</p>
+<h3>Memory-mapped I/O</h3>
+<p>When using memory-mapped I/O, the same address space is shared by memory and I/O devices. The device is connected directly to certain main memory locations so that I/O device can transfer block of data to/from memory without going through CPU.</p>
+<img src="./11 - Operating System - I_O Hardware_files/memory_mapped_io.jpg" alt="Memory-mapped I/O">
+<p>While using memory mapped IO, OS allocates buffer in memory and informs I/O device to use that buffer to send data to the CPU. I/O device operates asynchronously with CPU, interrupts CPU when finished.</p>
+<p>The advantage to this method is that every instruction which can access memory can be used to manipulate an I/O device. Memory mapped IO is used for most high-speed I/O devices like disks, communication interfaces.</p>
+<h2>Direct Memory Access (DMA)</h2>
+<p>Slow devices like keyboards will generate an interrupt to the main CPU after each byte is transferred. If a fast device such as a disk generated an interrupt for each byte, the operating system would spend most of its time handling these interrupts. So a typical computer uses direct memory access (DMA) hardware to reduce this overhead.</p>
+<p>Direct Memory Access (DMA) means CPU grants I/O module authority to read from or write to memory without involvement. DMA module itself controls exchange of data between main memory and the I/O device. CPU is only involved at the beginning and end of the transfer and interrupted only after entire block has been transferred.</p>
+<p>Direct Memory Access needs a special hardware called DMA controller (DMAC) that manages the data transfers and arbitrates access to the system bus. The controllers are programmed with source and destination pointers (where to read/write the data), counters to track the number of transferred bytes, and settings, which includes I/O and memory types, interrupts and states for the CPU cycles.</p>
+<img src="./11 - Operating System - I_O Hardware_files/dma.jpg" alt="DMA">
+<p>The operating system uses the DMA hardware as follows −</p>
+<table class="table table-bordered">
+<tbody><tr>
+<th style="width:5%;">Step</th>
+<th style="text-align:center">Description</th>
+</tr>
+<tr>
+<td>1</td>
+<td>Device driver is instructed to transfer disk data to a buffer address X.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Device driver then instruct disk controller to transfer data to buffer.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Disk controller starts DMA transfer.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Disk controller sends each byte to DMA controller.</td>
+</tr>
+<tr>
+<td>5</td>
+<td>DMA controller transfers bytes to buffer, increases the memory address, decreases the counter C until C becomes zero.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>When C becomes zero, DMA interrupts CPU to signal transfer completion.</td>
+</tr>
+</tbody></table>
+<h2>Polling vs Interrupts I/O</h2> 
+<p>A computer must have a way of detecting the arrival of any type of input. There are two ways that this can happen, known as <b>polling</b> and <b>interrupts</b>. Both of these techniques allow the processor to deal with events that can happen at any time and that are not related to the process it is currently running.</p>
+<h3>Polling I/O</h3>
+<p>Polling is the simplest way for an I/O device to communicate with the processor. The process of periodically checking status of the device to see if it is time for the next I/O operation, is called polling. The I/O device simply puts the information in a Status register, and the processor must come and get the information.</p>
+<p>Most of the time, devices will not require attention and when one does it will have to wait until it is next interrogated by the polling program. This is an inefficient method and much of the processors time is wasted on unnecessary polls.</p>
+<p>Compare this method to a teacher continually asking every student in a class, one after another, if they need help. Obviously the more efficient method would be for a student to inform the teacher whenever they require assistance.</p>
+<h3>Interrupts I/O</h3>
+<p>An alternative scheme for dealing with I/O is the interrupt-driven method. An interrupt is a signal to the microprocessor from a device that requires attention.</p>
+<p>A device controller puts an interrupt signal on the bus when it needs CPU’s attention when CPU receives an interrupt, It saves its current state and invokes the appropriate interrupt handler using the interrupt vector (addresses of OS routines to handle various events). When the interrupting device has been dealt with, the CPU continues with its original task as if it had never been interrupted.</p>
+<hr>
+<div class="pre-btn">
+<a href="https://www.tutorialspoint.com/operating_system/os_virtual_memory.htm"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="print-btn center">
+<a href="https://www.tutorialspoint.com/cgi-bin/printpage.cgi" target="_blank"><i class="icon icon-print big-font"></i> Print</a>
+</div>
+<div class="nxt-btn">
+<a href="https://www.tutorialspoint.com/operating_system/os_io_software.htm">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<hr>
+<!-- PRINTING ENDS HERE -->
+<div class="bottomgooglead">
+<div class="bottomadtag">Advertisements</div>
+<!-- /60931893/tutorial_bottom_leader_board -->
+<div id="div-gpt-ad-1510138782906-3">
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510138782906-3'); });
+</script>
+<div id="google_ads_iframe_/60931893/tutorial_bottom_leader_board_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/60931893/tutorial_bottom_leader_board_0" title="3rd party ad content" name="google_ads_iframe_/60931893/tutorial_bottom_leader_board_0" width="600" height="400" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" src="./11 - Operating System - I_O Hardware_files/saved_resource.html"></iframe></div></div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3" id="rightbar">
+<div class="ysubscribe">
+  <script async="" src="./11 - Operating System - I_O Hardware_files/platform.js.download" gapi_processed="true"></script>
+  <div id="___ytsubscribe_0" style="position: absolute; width: 450px; left: -10000px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position:absolute;top:-10000px;width:450px;margin:0px;border-style:none" tabindex="0" vspace="0" width="100%" id="I0_1518722791691" name="I0_1518722791691" src="./11 - Operating System - I_O Hardware_files/subscribe_embed.html" data-gapiattached="true"></iframe></div><div class="g-ytsubscribe" data-channelid="UCVLbzhxVTiTLiVKeGV7WEBg" data-layout="full" data-count="default" data-gapiscan="true" data-onload="true" data-gapistub="true"></div>
+</div>
+<div class="rightgooglead">
+<!-- /60931893/tutorial_right_top -->
+<div id="div-gpt-ad-1510138782906-2" style="height:250px; width:300px;">
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510138782906-2'); });
+</script>
+<div id="google_ads_iframe_/60931893/tutorial_right_top_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/60931893/tutorial_right_top_0" title="3rd party ad content" name="google_ads_iframe_/60931893/tutorial_right_top_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" src="./11 - Operating System - I_O Hardware_files/saved_resource(1).html"></iframe></div></div>
+</div>
+<div class="rightgooglead">
+<!-- /60931893/tutorial_right_middle -->
+<div id="div-gpt-ad-1510138782906-1">
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510138782906-1'); });
+</script>
+<div id="google_ads_iframe_/60931893/tutorial_right_middle_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/60931893/tutorial_right_middle_0" title="3rd party ad content" name="google_ads_iframe_/60931893/tutorial_right_middle_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" src="./11 - Operating System - I_O Hardware_files/saved_resource(2).html"></iframe></div></div>
+</div>
+<div class="rightgooglead">
+<!-- /60931893/tutorial_right_bottom -->
+<div id="div-gpt-ad-1510138782906-0">
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510138782906-0'); });
+</script>
+<div id="google_ads_iframe_/60931893/tutorial_right_bottom_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/60931893/tutorial_right_bottom_0" title="3rd party ad content" name="google_ads_iframe_/60931893/tutorial_right_bottom_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" src="./11 - Operating System - I_O Hardware_files/saved_resource(3).html"></iframe></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer-copyright">
+<div class="container">
+<div class="row">
+<div class="col-md-1">
+<a href="https://www.tutorialspoint.com/index.htm" class="logo"> <img alt="Tutorials Point" class="img-responsive" src="./11 - Operating System - I_O Hardware_files/logo-footer.png"> </a>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <nav id="sub-menu">
+      <ul>
+         <li><a href="https://www.tutorialspoint.com/about/tutorials_writing.htm">Write for us</a></li>
+         <li><a href="https://www.tutorialspoint.com/about/faq.htm">FAQ's</a></li>
+         <li><a href="https://www.tutorialspoint.com/about/about_helping.htm">Helping</a></li>
+         <li><a href="https://www.tutorialspoint.com/about/contact_us.htm">Contact</a></li>
+      </ul>
+   </nav>
+</div>
+<div class="col-md-3 col-sm-12 col-xs-12">
+<p>© Copyright 2018. All Rights Reserved.</p>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <div class="news-group">
+      <input type="text" class="form-control-foot search" name="textemail" id="textemail" autocomplete="off" placeholder="Enter email for newsletter" onfocus="if (this.value == &#39;Enter email for newsletter...&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Enter email for newsletter...&#39;;}">
+      <span class="input-group-btn"> <button class="btn btn-default btn-footer" id="btnemail" type="submit" onclick="javascript:void(0);">go</button> </span>
+      <div id="newsresponse"></div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Libs -->
+<script type="text/javascript" src="./11 - Operating System - I_O Hardware_files/custom-min.js.download"></script><a class="scroll-to-top" href="https://www.tutorialspoint.com/#" id="scrollToTop"><i class="icon icon-chevron-up icon-white"></i></a>
+<script src="./11 - Operating System - I_O Hardware_files/urchin.js.download">
+</script>
+<script type="text/javascript">
+_uacct = "UA-232293-6";
+urchinTracker();
+$('.pg-icon').click(function(){
+   $('.wrapLoader').show();
+});
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Operating System - I/O Hardware",
+    "name": "Operating System - I/O Hardware",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.tutorialspoint.com/operating_system/os_io_hardware.htm"
+    },
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://www.tutorialspoint.com/operating_system/images/device_controllers.jpg",
+        "width": 600,
+        "height": 237
+    },
+    "author": {
+        "@type": "Organization",
+        "name": "Tutorials Point",
+        "url": "https://www.tutorialspoint.com",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.tutorialspoint.com/images/logo60.png",
+            "width": 210,
+            "height": 60
+        }
+    },
+    "datePublished": "January 08 2018 06:25:16.",
+    "dateModified": "January 08 2018 06:25:16.",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Tutorials Point",
+        "url": "https://www.tutorialspoint.com",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.tutorialspoint.com/images/logo60.png",
+            "width": 210,
+            "height": 60
+        }
+    },
+    "description": "One of the important jobs of an Operating System is to manage various I/O devices including mouse, keyboards, touch pad, disk drives, display adapters, USB devices, Bit-mapped screen, LED, Analog-to-digital converter, On/off switch, network connections, a..."
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+                "name": "www.tutorialspoint.com",
+                "@id": "https://www.tutorialspoint.com"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+                "name": "Operating System",
+                "@id": "https://www.tutorialspoint.com/operating_system"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+                "name": "OS -  I/O Hardware"
+            }
+        }
+    ]
+}
+</script>
+
+
+
+<div class="autocomplete-suggestions "></div><iframe name="oauth2relay438065914" id="oauth2relay438065914" src="./11 - Operating System - I_O Hardware_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe></body></html>

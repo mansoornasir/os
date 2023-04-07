@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<!-- saved from url=(0063)https://www.tutorialspoint.com/operating_system/os_overview.htm -->
+<html style="" class=" js touch csstransforms3d csstransitions"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Basic -->
+
+<title>Operating System Overview</title>
+<meta name="description" content="Operating System Overview - Learning operating system concepts in simple and easy steps : A beginner&#39;s tutorial containing complete knowledge about an operating system starting from its Definition, Functions, Conceptual View, Program Execution, Program Execution, Communication, Error Handling, User Account Management, Multitasking, Real Time System, Process, Program, Memory Management, and Security, Overview, Types, Services, Properties, Processes, Process Scheduling, Scheduling Algorithms, Multithreading, Virtual Memory, I/O Hardware, I/O Software, File System, Linux.">
+<meta name="Keywords" content="Operating System, Tutorials, Learning, Beginners, Basics, Definition, Functions, Conceptual View, Program Execution, Program Execution, Communication, Error Handling, User Account Management, Multitasking, Real Time System, Process, Program, Memory Management, Security, Overview, Types, Services, Properties, Processes, Process Scheduling, Scheduling Algorithms, Multithreading, Virtual Memory, I/O Hardware, I/O Software, File System, Linux.">
+<!--<base href="https://www.tutorialspoint.com/">--><base href=".">
+<link rel="shortcut icon" href="https://www.tutorialspoint.com/favicon.ico" type="image/x-icon">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=yes">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="fb:app_id" content="471319149685276">
+<meta property="og:site_name" content="www.tutorialspoint.com">
+<meta name="robots" content="index, follow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="author" content="tutorialspoint.com">
+<script src="./1 - Operating System Overview_files/cb=gapi.loaded_2" async=""></script><script src="https://securepubads.g.doubleclick.net/gampad/ads?gdfp_req=1&amp;correlator=1663849244332674&amp;output=json_html&amp;callback=googletag.impl.pubads.callbackProxy1&amp;impl=fifs&amp;json_a=1&amp;eid=21060362%2C21061262%2C21061264%2C21061149&amp;sc=1&amp;sfv=1-0-15&amp;iu_parts=60931893%2Ctutorial_right_bottom%2Ctutorial_right_middle%2Ctutorial_right_top%2Ctutorial_bottom_leader_board&amp;enc_prev_ius=%2F0%2F1%2C%2F0%2F2%2C%2F0%2F3%2C%2F0%2F4&amp;prev_iu_szs=300x250%7C300x600%2C300x250%7C300x600%2C300x250%2C600x400%7C300x250%7C480x320%7C468x60%7C336x280%7C600x200%7C580x400&amp;cookie_enabled=1&amp;abxe=1&amp;lmt=1518625750&amp;dt=1518722506090&amp;frm=20&amp;biw=1583&amp;bih=769&amp;oid=3&amp;adxs=0%2C0%2C0%2C0&amp;adys=0%2C0%2C0%2C0&amp;adks=3716823738%2C749877563%2C2359137328%2C2749173601&amp;gut=v2&amp;ifi=1&amp;u_tz=300&amp;u_his=4&amp;u_h=900&amp;u_w=1600&amp;u_ah=860&amp;u_aw=1600&amp;u_cd=24&amp;u_nplug=4&amp;u_nmime=5&amp;u_sd=1&amp;flash=0&amp;url=https%3A%2F%2Fwww.tutorialspoint.com%2Foperating_system%2Fos_overview.htm&amp;ref=https%3A%2F%2Fwww.tutorialspoint.com%2Foperating_system%2Findex.htm&amp;dssz=15&amp;icsg=14376&amp;std=0&amp;vrg=179&amp;vis=1&amp;dmc=8&amp;scr_x=0&amp;scr_y=0&amp;ga_vid=611065315.1518173297&amp;ga_sid=1518722502&amp;ga_hid=36109326&amp;ga_fc=true"></script><script src="./1 - Operating System Overview_files/cb=gapi.loaded_1" async=""></script><script src="./1 - Operating System Overview_files/cb=gapi(1).loaded_0" async=""></script><script src="https://securepubads.g.doubleclick.net/gpt/pubads_impl_rendering_179.js"></script><script type="text/javascript" src="./1 - Operating System Overview_files/script-min-v4.js.download"></script>
+<link rel="stylesheet" href="./1 - Operating System Overview_files/style-min.css">
+<script async="async" src="./1 - Operating System Overview_files/gpt.js.download"></script>
+<script>
+  var googletag = googletag || {};
+  googletag.cmd = googletag.cmd || [];
+</script><link rel="preload" href="https://adservice.google.com.pk/adsid/integrator.js?domain=www.tutorialspoint.com" as="script"><script type="text/javascript" src="https://adservice.google.com.pk/adsid/integrator.js?domain=www.tutorialspoint.com"></script><link rel="preload" href="https://adservice.google.com/adsid/integrator.js?domain=www.tutorialspoint.com" as="script"><script type="text/javascript" src="https://adservice.google.com/adsid/integrator.js?domain=www.tutorialspoint.com"></script><script src="https://securepubads.g.doubleclick.net/gpt/pubads_impl_179.js" async=""></script>
+<script>
+googletag.cmd.push(function() {
+    googletag.defineSlot('/60931893/tutorial_right_bottom', [[300, 250], [300, 600]], 'div-gpt-ad-1510138782906-0').addService(googletag.pubads());
+    googletag.defineSlot('/60931893/tutorial_right_middle', [[300, 250], [300, 600]], 'div-gpt-ad-1510138782906-1').addService(googletag.pubads());
+    googletag.defineSlot('/60931893/tutorial_right_top', [300, 250], 'div-gpt-ad-1510138782906-2').addService(googletag.pubads());
+    googletag.defineSlot('/60931893/tutorial_bottom_leader_board', [[600, 400], [300, 250], [480, 320], [468, 60], [336, 280], [600, 200], [580, 400]], 'div-gpt-ad-1510138782906-3').addService(googletag.pubads());
+    googletag.pubads().enableSingleRequest();
+    googletag.enableServices();
+});
+function openNav() {	
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("right_obs").style.display = "block";
+}
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("right_obs").style.display = "none";
+}
+function close_obs_sidenav(){
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("right_obs").style.display = "none";
+}
+</script>
+<!-- Head Libs -->
+<!--[if IE 8]>
+<link rel="stylesheet" type="text/css" href="/theme/css/ie8.css">
+<![endif]-->
+<style>
+select{ border:0 !important; outline: 1px inset black !important; outline-offset: -1px !important; }
+.btnsbmt{ background: #3896c2 !important;}
+ul.nav-list.primary>li a.videolink{    background: none; margin: 0px; padding: 0px; border: 1px solid #d6d6d6;}
+div.feature-box div.feature-box-icon, .col-md-3 .course-box, li.heading, div.footer-copyright { background: #3896c2 url(/images/pattern.png) repeat center center !important;}
+.sub-main-menu .sub-menuu div:hover, .sub-main-menu .viewall, header nav ul.nav-main li a:hover, button.btn-responsive-nav, header div.search button.btn-default { background: #3896c2 !important;}
+.submenu-item{ border-bottom: 2px solid #3896c2 !important; border-top: 2px solid #3896c2 !important }
+.ace_scroller{overflow: auto!important;}
+a.demo{font-family: "Open Sans",Arial,sans-serif; background:#3896c2; color:#fff; font-size:13px; padding:3px 10px; border:1px solid #d6d6d6; position:absolute; right:5px; margin:-6px 17px 0px 0px;}
+a.demo:hover{opacity:.8}
+</style>
+<script>
+$(document).ready(function() {
+  $('input[name="q"]').keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
+</script>
+<link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-15/html/container.html"><style>.gc-bubbleDefault{background-color:transparent !important;text-align:left;padding:0 !important;margin:0 !important;border:0 !important;table-layout:auto !important}.gc-reset{background-color:transparent !important;border:0 !important;padding:0 !important;margin:0 !important;text-align:left}.pls-bubbleTop{border-bottom:1px solid #ccc !important}.pls-topTail,.pls-vertShimLeft,.pls-contentLeft{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/border_3.gif) !important}.pls-topTail{background-repeat:repeat-x !important;background-position:bottom !important}.pls-vertShim{background-color:#fff !important;text-align:right}.tbl-grey .pls-vertShim{background-color:#f5f5f5 !important}.pls-vertShimLeft{background-repeat:repeat-y !important;background-position:right !important;height:4px}.pls-vertShimRight{height:4px}.pls-confirm-container .pls-vertShim{background-color:#fff3c2 !important}.pls-contentWrap{background-color:#fff !important;position:relative !important;vertical-align:top}.pls-contentLeft{background-repeat:repeat-y;background-position:right;vertical-align:top}.pls-dropRight{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleDropR_3.png) !important;background-repeat:repeat-y !important;vertical-align:top}.pls-vert,.pls-tailleft,.pls-dropTR .pls-dropBR,.pls-dropBL,.pls-vert img{vertical-align:top}.pls-dropBottom{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleDropB_3.png) !important;background-repeat:repeat-x !important;width:100%;vertical-align:top}.pls-topLeft{background:inherit !important;text-align:right;vertical-align:bottom}.pls-topRight{background:inherit !important;text-align:left;vertical-align:bottom}.pls-bottomLeft{background:inherit !important;text-align:right}.pls-bottomRight{background:inherit !important;text-align:left;vertical-align:top}.pls-tailtop,.pls-tailright,.pls-tailbottom,.pls-tailleft{display:none;position:relative}.pls-tailbottom,.pls-tailtop,.pls-tailright,.pls-tailleft,.pls-dropTR,.pls-dropBR,.pls-dropBL{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleSprite_3.png) !important;background-repeat:no-repeat}.tbl-grey .pls-tailbottom,.tbl-grey .pls-tailtop,.tbl-grey .pls-tailright,.tbl-grey .pls-tailleft,.tbl-grey .pls-dropTR,.tbl-grey .pls-dropBR,.tbl-grey .pls-dropBL{background-image:url(//ssl.gstatic.com/s2/oz/images/stars/po/bubblev1/bubbleSprite-grey.png) !important}.pls-tailbottom{background-position:-23px 0}.pls-confirm-container .pls-tailbottom{background-position:-23px -10px}.pls-tailtop{background-position:-19px -20px}.pls-tailright{background-position:0 0}.pls-tailleft{background-position:-10px 0}.pls-tailtop{vertical-align:top}.gc-bubbleDefault td{line-height:0;font-size:0}.pls-topLeft img,.pls-topRight img,.pls-tailbottom{vertical-align:bottom}.pls-bottomLeft img,.bubbleDropTR,.pls-dropBottomL img,.pls-dropBottom img,.pls-dropBottomR img,.pls-bottomLeft{vertical-align:top}.pls-dropTR{background-position:0 -22px}.pls-dropBR{background-position:0 -27px}.pls-dropBL{background-position:0 -16px}.pls-spacertop,.pls-spacerright,.pls-spacerbottom,.pls-spacerleft{position:static !important}.pls-spinner{bottom:0;position:absolute;left:0;margin:auto;right:0;top:0} </style></head>
+<body onload="prettyPrint()" style="">
+<div class="wrapLoader">
+   <div class="imgLoader">
+      <img src="./1 - Operating System Overview_files/loading-cg.gif" alt="" width="70" height="70">
+   </div>
+</div>
+<div id="right_obs" class="display-none" onclick="close_obs_sidenav()"></div>
+<header>
+   <div class="container">			
+      <h1 class="logo">
+      <a href="https://www.tutorialspoint.com/index.htm" title="tutorialspoint">
+      <img alt="tutorialspoint" src="./1 - Operating System Overview_files/logo.png">
+      </a>
+      </h1>			
+      <ul class="tp-inline-block pull-right" id="tp-head-icons">
+        <li>
+           <div class="tp-second-nav tp-display-none tp-pointer" onclick="openNav()">
+              <i class="fa fa-th-large fa-lg"></i>
+           </div>
+        </li>
+     </ul>
+     <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse" id="pull" style="top: 2372px!important"> <i class="icon icon-bars"></i> </button>
+      <nav>
+         <ul class="nav nav-pills nav-top">
+            <li><a href="https://www.tutorialspoint.com/about/about_careers.htm" style="background: #fffb09; font-weight: bold;"><i class="icon icon-suitcase"></i> Are you a Trainer?</a></li>
+            <li> <a target="_blank" href="http://www.qries.com/" rel="nofollow"><i class="fa fa-send"></i> &nbsp;Qries</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/whiteboard.htm"><img src="./1 - Operating System Overview_files/image-editor.png" alt="Whiteboard" title="Whiteboard"> &nbsp;Whiteboard</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/netmeeting.php"><i class="fa-camera"></i> &nbsp;Net Meeting</a> </li>
+            <li> <a href="https://www.tutorialspoint.com/online_dev_tools.htm"> <i class="dev-tools-menu" style="opacity:.5"></i> Tools </a> </li>
+            <li> <a href="https://www.tutorialspoint.com/articles/index.php"><i class="icon icon-file-text-o"></i> &nbsp;Articles</a> </li>            
+            <li class="top-icons">
+              <ul class="social-icons">
+              <li class="facebook"><a href="https://www.facebook.com/tutorialspointindia" target="_blank" data-placement="bottom" title="tutorialspoint @ Facebook">Facebook</a></li>
+              <li class="googleplus"><a href="https://plus.google.com/u/0/116678774017490391259/posts" target="_blank" data-placement="bottom" title="tutorialspoint @ Google+">Google+</a></li>
+              <li class="twitter"><a href="https://www.twitter.com/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Twitter">Twitter</a></li>
+              <li class="linkedin"><a href="https://www.linkedin.com/company/tutorialspoint" target="_blank" data-placement="bottom" title="tutorialspoint @ Linkedin">Linkedin</a></li>
+              <li class="youtube"><a href="https://www.youtube.com/channel/UCVLbzhxVTiTLiVKeGV7WEBg" target="_blank" data-placement="bottom" title="tutorialspoint YouTube">YouTube</a></li>
+              </ul>
+           </li>
+         </ul>
+      </nav>
+    </div>
+     <div class="sidenav" id="mySidenav">
+     <div class="navbar nav-main">
+      <div class="container">
+         <nav class="nav-main mega-menu">
+            <ul class="nav nav-pills nav-main" id="mainMenu">
+               <li class="dropdown no-sub-menu"> <a class="dropdown" href="https://www.tutorialspoint.com/index.htm"><i class="icon icon-home"></i> Home</a> </li>   
+               <li class="dropdown"><a class="dropdown" href="https://www.tutorialspoint.com/tutorialslibrary.htm"><span class="tut-lib"> Library </span></a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/videotutorials/index.htm"><i class="fa-toggle-right"></i> Videos </a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/questions/index.php"><i class="fa fa-send"></i> Q/A </a> </li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/tutor_connect/index.php"><i class="fa-user"> </i> Tutor Connect</a></li>
+               <li class="dropdown no-sub-menu"><a class="dropdown" href="https://www.tutorialspoint.com/codingground.htm"><i class="fa-code"></i> Coding Ground </a> </li>
+               <li class="dropdown no-sub-menu">
+                  <div class="searchform-popup">
+                     <input class="header-search-box" type="text" id="search-string" name="q" placeholder="Search your favorite tutorials..." onfocus="if (this.value == &#39;Search your favorite tutorials...&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Search your favorite tutorials...&#39;;}" autocomplete="off" style="">
+                     <div class="magnifying-glass"><i class="icon-search"></i> Search </div>
+                 </div>
+               </li>
+            </ul>
+         </nav>
+        </div>
+      </div>	
+     </div>	
+   	
+</header>
+<div style="clear:both;"></div>
+<div role="main" class="main">
+<div class="container">
+<div class="row">
+<div class="col-md-2">
+<aside class="sidebar">
+<div class="mini-logo">
+<img src="./1 - Operating System Overview_files/os-mini-logo.jpg" alt="Operating System Tutorial">
+</div>
+<ul class="nav nav-list primary left-menu">
+<li><a class="videolink" href="https://www.tutorialspoint.com/operating_system/index.asp" target="_blank"><img src="./1 - Operating System Overview_files/operating-system-video-tutorials.jpg" alt="Operating System Video Tutorials"></a></li>
+</ul>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Operating System Tutorial</li>
+<li><a href="https://www.tutorialspoint.com/operating_system/index.htm">OS - Home</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_overview.htm" style="background-color: rgb(214, 214, 214);">OS - Overview</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_types.htm">OS - Types</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_services.htm">OS - Services</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_properties.htm">OS - Properties</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_processes.htm">OS - Processes</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_process_scheduling.htm">OS - Process Scheduling</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_process_scheduling_algorithms.htm">OS - Scheduling algorithms</a></li> 
+<li><a href="https://www.tutorialspoint.com/operating_system/os_multi_threading.htm">OS -  Multi-threading</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_memory_management.htm">OS - Memory Management</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_virtual_memory.htm">OS -  Virtual Memory</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_io_hardware.htm">OS -  I/O Hardware</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_io_software.htm">OS - I/O Software</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_file_system.htm">OS -  File System</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_security.htm">OS - Security</a></li>
+<li><a href="https://www.tutorialspoint.com/operating_system/os_linux.htm">OS - Linux</a></li>
+</ul>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">OS - Exams Questions with Answers</li>
+<li><a class="left" href="https://www.tutorialspoint.com/operating_system/os_exams_questions_answers.htm">OS - Exams Questions with Answers</a></li>
+</ul>
+<ul class="nav nav-list primary left-menu">
+<li class="heading">Operating System Useful Resources</li>
+<li><a class="left" href="https://www.tutorialspoint.com/operating_system/os_quick_guide.htm">OS - Quick Guide</a></li>
+<li><a class="left" href="https://www.tutorialspoint.com/operating_system/os_useful_resources.htm">OS - Useful Resources</a></li>
+<li><a class="left" href="https://www.tutorialspoint.com/operating_system/os_discussion.htm">OS - Discussion</a></li>
+</ul>
+<ul class="nav nav-list primary push-bottom left-menu special">
+<li class="sreading">Selected Reading</li>
+<li><a target="_top" href="https://www.tutorialspoint.com/developers_best_practices/index.htm">Developer's Best Practices</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/questions_and_answers.htm">Questions and Answers</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/effective_resume_writing.htm">Effective Resume Writing</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/hr_interview_questions/index.htm">HR Interview Questions</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_glossary.htm">Computer Glossary</a></li>
+<li><a target="_top" href="https://www.tutorialspoint.com/computer_whoiswho.htm">Who is Who</a></li>
+</ul>
+ </aside>
+</div>
+<!-- PRINTING STARTS HERE -->
+<div class="row">
+<div class="content">
+<div class="col-md-7 middle-col">
+<h1>Operating System - Overview</h1>
+<div class="topgooglead">
+<hr>
+<div style="padding-bottom:5px;padding-left:10px;">Advertisements</div>
+<script type="text/javascript"><!--
+google_ad_client = "pub-7133395778201029";
+google_ad_width = 468;
+google_ad_height = 60;
+google_ad_format = "468x60_as";
+google_ad_type = "image";
+google_ad_channel = "";
+//--></script>
+<script type="text/javascript" src="https://pagead2.googlesyndication.com/pagead/show_ads.js"> 
+</script>
+</div>
+<hr>
+<div class="pre-btn">
+<a href="https://www.tutorialspoint.com/operating_system/index.htm"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="nxt-btn">
+<a href="https://www.tutorialspoint.com/operating_system/os_types.htm">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<div class="clearer"></div>
+<hr>
+<p>An Operating System (OS) is an interface between a computer user and computer hardware. An operating system is a software which performs all the basic tasks like file management, memory management, process management, handling input and output, and controlling peripheral devices such as disk drives and printers.</p>
+<p>Some popular Operating Systems include Linux, Windows, OS X, VMS, OS/400, AIX, z/OS, etc.</p>
+<h2>Definition</h2>
+<p>An operating system is a program that acts as an interface between the user and the computer hardware and controls the execution of all kinds of programs.</p>
+<img src="./1 - Operating System Overview_files/conceptual_view.jpg" alt="Conceptual view of an Operating System">
+<p>Following are some of important functions of an operating System.</p>
+<ul class="list">
+<li>Memory Management</li>
+<li>Processor Management</li>
+<li>Device Management</li>
+<li>File Management</li>
+<li>Security</li>
+<li>Control over system performance</li>
+<li>Job accounting</li> 
+<li>Error detecting aids</li>
+<li>Coordination between other software and users</li>
+</ul>
+<h2>Memory Management</h2>
+<p>Memory management refers to management of Primary Memory or Main Memory. Main memory is a large array of words or bytes where each word or byte has its own address.</p>
+<p>Main memory provides a fast storage that can be accessed directly by the CPU. For a program to be executed, it must in the main memory. An Operating System does the following activities for memory management −</p>
+<ul class="list">
+<li><p>Keeps tracks of primary memory, i.e., what part of it are in use by whom, what part are not in use.</p></li>
+<li><p>In multiprogramming, the OS decides which process will get memory when and how much.</p></li>
+<li><p>Allocates the memory when a process requests it to do so.</p></li>
+<li><p>De-allocates the memory when a process no longer needs it or has been terminated.</p></li>
+</ul>
+<h2>Processor Management</h2>
+<p>In multiprogramming environment, the OS decides which process gets the processor when and for how much time. This function is called <b>process  scheduling</b>. An Operating System does the following activities for processor management −</p>
+<ul class="list">
+<li><p>Keeps tracks of processor and status of process. The program responsible for this task is known as <b>traffic controller</b>.</p></li>
+<li><p>Allocates the processor (CPU) to a process.</p></li>
+<li><p>De-allocates processor when a process is no longer required.</p></li>
+</ul>
+<h2>Device Management</h2>
+<p>An Operating System manages device communication via their respective drivers. It does the following activities for device management −</p>
+<ul class="list">
+<li><p>Keeps tracks of all devices. Program responsible for this task is known as the <b>I/O controller</b>.</p></li>
+<li><p>Decides which process gets the device when and for how much time.</p></li>
+<li><p>Allocates the device in the efficient way.</p></li>
+<li><p>De-allocates devices.</p></li>
+</ul>
+<h2>File Management</h2>
+<p>A file system is normally organized into directories for easy navigation and usage. These directories may contain files and other directions.</p>
+<p>An Operating System does the following activities for file management −</p>
+<ul class="list">
+<li><p>Keeps track of information, location, uses, status etc. The collective facilities are often known as <b>file system</b>.</p></li>
+<li><p>Decides who gets the resources.</p></li>
+<li><p>Allocates the resources.</p></li>
+<li><p>De-allocates the resources.</p></li>
+</ul>
+<h2>Other Important Activities</h2>
+<p>Following are some of the important activities that an Operating System performs −</p>
+<ul class="list">
+<li><p><b>Security</b> −  By means of password and similar other techniques, it prevents unauthorized access to programs and data.</p></li>
+<li><p><b>Control over system performance</b> − Recording delays between request for a service and response from the system.</p></li>
+<li><p><b>Job accounting</b> − Keeping track of time and resources used by various jobs and users.</p></li>
+<li><p><b>Error detecting aids</b> − Production of dumps, traces, error messages, and other debugging and error detecting aids.</p></li>
+<li><p><b>Coordination between other softwares and users</b> − Coordination and assignment of compilers, interpreters, assemblers and other software to the various users of the computer systems.</p></li>
+</ul>
+<hr>
+<div class="pre-btn">
+<a href="https://www.tutorialspoint.com/operating_system/index.htm"><i class="icon icon-arrow-circle-o-left big-font"></i> Previous Page</a>
+</div>
+<div class="print-btn center">
+<a href="https://www.tutorialspoint.com/cgi-bin/printpage.cgi" target="_blank"><i class="icon icon-print big-font"></i> Print</a>
+</div>
+<div class="nxt-btn">
+<a href="https://www.tutorialspoint.com/operating_system/os_types.htm">Next Page <i class="icon icon-arrow-circle-o-right big-font"></i>&nbsp;</a>
+</div>
+<hr>
+<!-- PRINTING ENDS HERE -->
+<div class="bottomgooglead">
+<div class="bottomadtag">Advertisements</div>
+<!-- /60931893/tutorial_bottom_leader_board -->
+<div id="div-gpt-ad-1510138782906-3">
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510138782906-3'); });
+</script>
+<div id="google_ads_iframe_/60931893/tutorial_bottom_leader_board_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/60931893/tutorial_bottom_leader_board_0" title="3rd party ad content" name="google_ads_iframe_/60931893/tutorial_bottom_leader_board_0" width="600" height="400" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" src="./1 - Operating System Overview_files/saved_resource.html"></iframe></div></div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-3" id="rightbar">
+<div class="ysubscribe">
+  <script async="" src="./1 - Operating System Overview_files/platform.js.download" gapi_processed="true"></script>
+  <div id="___ytsubscribe_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 224px; height: 48px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 224px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 48px;" tabindex="0" vspace="0" width="100%" id="I0_1518722506149" name="I0_1518722506149" src="./1 - Operating System Overview_files/subscribe_embed.html" data-gapiattached="true"></iframe></div>
+</div>
+<div class="rightgooglead">
+<!-- /60931893/tutorial_right_top -->
+<div id="div-gpt-ad-1510138782906-2" style="height:250px; width:300px;">
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510138782906-2'); });
+</script>
+<div id="google_ads_iframe_/60931893/tutorial_right_top_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/60931893/tutorial_right_top_0" title="3rd party ad content" name="google_ads_iframe_/60931893/tutorial_right_top_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" src="./1 - Operating System Overview_files/saved_resource(1).html"></iframe></div></div>
+</div>
+<div class="rightgooglead">
+<!-- /60931893/tutorial_right_middle -->
+<div id="div-gpt-ad-1510138782906-1">
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510138782906-1'); });
+</script>
+<div id="google_ads_iframe_/60931893/tutorial_right_middle_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/60931893/tutorial_right_middle_0" title="3rd party ad content" name="google_ads_iframe_/60931893/tutorial_right_middle_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" src="./1 - Operating System Overview_files/saved_resource(2).html"></iframe></div></div>
+</div>
+<div class="rightgooglead">
+<!-- /60931893/tutorial_right_bottom -->
+<div id="div-gpt-ad-1510138782906-0">
+<script>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1510138782906-0'); });
+</script>
+<div id="google_ads_iframe_/60931893/tutorial_right_bottom_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/60931893/tutorial_right_bottom_0" title="3rd party ad content" name="google_ads_iframe_/60931893/tutorial_right_bottom_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" src="./1 - Operating System Overview_files/saved_resource(3).html"></iframe></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="footer-copyright">
+<div class="container">
+<div class="row">
+<div class="col-md-1">
+<a href="https://www.tutorialspoint.com/index.htm" class="logo"> <img alt="Tutorials Point" class="img-responsive" src="./1 - Operating System Overview_files/logo-footer.png"> </a>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <nav id="sub-menu">
+      <ul>
+         <li><a href="https://www.tutorialspoint.com/about/tutorials_writing.htm">Write for us</a></li>
+         <li><a href="https://www.tutorialspoint.com/about/faq.htm">FAQ's</a></li>
+         <li><a href="https://www.tutorialspoint.com/about/about_helping.htm">Helping</a></li>
+         <li><a href="https://www.tutorialspoint.com/about/contact_us.htm">Contact</a></li>
+      </ul>
+   </nav>
+</div>
+<div class="col-md-3 col-sm-12 col-xs-12">
+<p>© Copyright 2018. All Rights Reserved.</p>
+</div>
+<div class="col-md-4 col-sm-12 col-xs-12">
+   <div class="news-group">
+      <input type="text" class="form-control-foot search" name="textemail" id="textemail" autocomplete="off" placeholder="Enter email for newsletter" onfocus="if (this.value == &#39;Enter email for newsletter...&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Enter email for newsletter...&#39;;}">
+      <span class="input-group-btn"> <button class="btn btn-default btn-footer" id="btnemail" type="submit" onclick="javascript:void(0);">go</button> </span>
+      <div id="newsresponse"></div>
+   </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Libs -->
+<script type="text/javascript" src="./1 - Operating System Overview_files/custom-min.js.download"></script><a class="scroll-to-top visible" href="https://www.tutorialspoint.com/#" id="scrollToTop"><i class="icon icon-chevron-up icon-white"></i></a>
+<script src="./1 - Operating System Overview_files/urchin.js.download">
+</script>
+<script type="text/javascript">
+_uacct = "UA-232293-6";
+urchinTracker();
+$('.pg-icon').click(function(){
+   $('.wrapLoader').show();
+});
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Operating System Overview",
+    "name": "Operating System Overview",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://www.tutorialspoint.com/operating_system/os_overview.htm"
+    },
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://www.tutorialspoint.com/operating_system/images/conceptual_view.jpg",
+        "width": 343,
+        "height": 355
+    },
+    "author": {
+        "@type": "Organization",
+        "name": "Tutorials Point",
+        "url": "https://www.tutorialspoint.com",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.tutorialspoint.com/images/logo60.png",
+            "width": 210,
+            "height": 60
+        }
+    },
+    "datePublished": "January 08 2018 06:25:16.",
+    "dateModified": "January 08 2018 06:25:16.",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Tutorials Point",
+        "url": "https://www.tutorialspoint.com",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.tutorialspoint.com/images/logo60.png",
+            "width": 210,
+            "height": 60
+        }
+    },
+    "description": "An Operating System (OS) is an interface between a computer user and computer hardware. An operating system is a software which performs all the basic tasks like file management, memory management, process management, handling input and output, and contro..."
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "item": {
+                "name": "www.tutorialspoint.com",
+                "@id": "https://www.tutorialspoint.com"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "item": {
+                "name": "Operating System",
+                "@id": "https://www.tutorialspoint.com/operating_system"
+            }
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "item": {
+                "name": "OS - Overview"
+            }
+        }
+    ]
+}
+</script>
+
+
+
+<div class="autocomplete-suggestions " style="top: 2424px; left: 0px; width: 8px;"></div><iframe name="oauth2relay242968395" id="oauth2relay242968395" src="./1 - Operating System Overview_files/postmessageRelay.html" tabindex="-1" aria-hidden="true" style="width: 1px; height: 1px; position: absolute; top: -100px;"></iframe><div style="display: block; visibility: hidden; position: absolute; width: 106px; left: -1000px; top: -1000px;"><table cellpadding="0" cellspacing="0" dir="ltr" style="width:106px;" frame="void" rules="none" class=" gc-bubbleDefault pls-container"><tbody><tr class="gc-reset"><td class="pls-topLeft gc-reset"><img class="gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="./1 - Operating System Overview_files/border_3.gif"></td><td class="pls-topTail gc-reset"><img class="pls-tailbottom gc-reset" style="width:15px !important; height:9px !important; max-width: 15px !important; max-height: 9px !important;" src="./1 - Operating System Overview_files/spacer.gif"><img class="pls-spacerbottom gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="./1 - Operating System Overview_files/spacer.gif"></td><td class="pls-topRight gc-reset"><img class="gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="./1 - Operating System Overview_files/border_3.gif"></td></tr><tr class="gc-reset"><td class="pls-vertShimLeft gc-reset"><img class="gc-reset" style="width:1px !important; height:4px !important; max-width: 1px !important; max-height: 4px !important;" src="./1 - Operating System Overview_files/spacer.gif"></td><td class="pls-vertShim gc-reset"><img class="gc-reset" style="width:1px !important; height:4px !important; max-width: 1px !important; max-height: 4px !important;" src="./1 - Operating System Overview_files/spacer.gif"></td><td class="pls-vertShimRight gc-reset"><img class="pls-dropTR gc-reset" style="width:5px !important; height:4px !important; max-width: 5px !important; max-height: 4px !important;" src="./1 - Operating System Overview_files/spacer.gif"></td></tr><tr class="gc-reset"><td class="pls-contentLeft gc-reset"><img class="pls-tailright gc-reset" style="width:9px !important; height:15px !important; max-width: 9px !important; max-height: 15px !important;" src="./1 - Operating System Overview_files/spacer.gif"><img class="pls-spacerright gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="./1 - Operating System Overview_files/spacer.gif"></td><td class="pls-contentWrap gc-reset"><div class="goog-bubble-content gc-reset"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="margin:0px;position:absolute;z-index:1;border-style:none;outline:none;width:100px;" tabindex="0" vspace="0" width="100%" id="I0_1518722508505" name="I0_1518722508505" src="./1 - Operating System Overview_files/subscribe_embed(1).html"></iframe></div></td><td class="pls-dropRight gc-reset"><img class="pls-tailleft gc-reset" style="width:12px !important; height:19px !important; max-width: 12px !important; max-height: 19px !important;" src="./1 - Operating System Overview_files/spacer.gif"><img class="pls-spacerleft gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="./1 - Operating System Overview_files/spacer.gif"></td></tr><tr class="gc-reset"><td class="pls-bottomLeft gc-reset"><img class="gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="./1 - Operating System Overview_files/border_3.gif"></td><td class="gc-reset"><table cellpadding="0" cellspacing="0" style="width:100%" class="gc-reset"><tbody><tr class="gc-reset"><td class="pls-vert gc-reset"><img class="pls-dropBL gc-reset" style="width:4px !important; height:5px !important; max-width: 4px !important; max-height: 5px !important;" src="./1 - Operating System Overview_files/spacer.gif"></td><td class="pls-dropBottom gc-reset"><img class="pls-tailtop gc-reset" style="width:19px !important; height:13px !important; max-width: 19px !important; max-height: 13px !important;" src="./1 - Operating System Overview_files/spacer.gif"><img class="pls-spacertop gc-reset" style="width:1px !important; height:1px !important; max-width: 1px !important; max-height: 1px !important;" src="./1 - Operating System Overview_files/spacer.gif"></td></tr></tbody></table></td><td class="pls-vert gc-reset"><img class="pls-dropBR gc-reset" style="width:5px !important; height:5px !important; max-width: 5px !important; max-height: 5px !important;" src="./1 - Operating System Overview_files/spacer.gif"></td></tr></tbody></table></div></body></html>

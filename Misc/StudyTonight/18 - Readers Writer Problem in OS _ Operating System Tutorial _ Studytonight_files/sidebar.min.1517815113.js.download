@@ -1,0 +1,9 @@
+$(window).scroll(function(e){var scroller_anchor=$(".scroller_anchor").offset().top;var fT=$("#footer").offset().top;var fH=$('#footer').outerHeight();var wH=$(window).height();var wS=$(this).scrollTop();if(wS>=scroller_anchor&&$('.scroller').css('position')!='fixed')
+{$('.scroller').css({'position':'fixed','top':'30px'})}
+else if(wS<scroller_anchor&&$('.scroller').css('position')!='relative')
+{$('.scroller').css({'position':'relative','top':'0px'})}
+if(wS>(fT-wH)){$('.scroller').css({'position':'relative','top':'0px'})}});$(function(){var sidebarInView=!1;$('#slide-in-sidebar').on('click',function(){if(sidebarInView==!1)
+{sidebarWidth=$(window).width()*0.75;$('#sidebar-sliding-menu').css({'left':'0','width':sidebarWidth});sidebarInView=!0}
+else{$('#sidebar-sliding-menu').css({'left':'-'+sidebarWidth+'px',});sidebarInView=!1}});var toTop=$('.mobile-sidebar-button').offset().top;$(window).scroll(function(){if($(window).scrollTop()>=toTop)
+{$('.mobile-sidebar-button').addClass('fixed')}
+else{$('.mobile-sidebar-button').removeClass('fixed')}})})

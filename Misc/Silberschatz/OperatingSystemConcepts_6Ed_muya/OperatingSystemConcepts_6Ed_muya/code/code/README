@@ -1,0 +1,21 @@
+The following directories contain the source code for Operating Systems Concepts - Sixth Edition.
+The contents include:
+
+chap4
+
+	- newproc.c - C program illustrating fork() system call. Figure 4-8.
+	- Server.java - Time-of-day server. Figure  4-10.
+	- Clint.java - Time-of-day client. Figure  4-11.
+
+chap5
+
+	- thrd.c - Pthread program from Figure 5.5.
+	- Summation.java - Java thread from Figure 5-8.
+	- ThreadTester.java - Java thread tester from Figure 5-8.
+
+Instructions for compilation and running the programs are listed at the beginning of each
+program in comments.
+
+If you have any questions, please contact Greg Gagne at ggagne@westminstercollege.edu
+
+Last Updated - April 4, 2002.
